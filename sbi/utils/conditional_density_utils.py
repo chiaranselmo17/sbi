@@ -282,7 +282,11 @@ class ConditionedPotential:
         Return conditional posterior log-probability or $-\infty$ if outside prior.
 
         Args:
-            theta: Free parameters $\theta_i$, batch dimension 1.
+            potential_fn: Potential function to condition on.
+            condition: Fixed parameters $\theta_j$, batch dimension 1.
+            dims_to_sample: Which dimensions to sample from. The dimensions not
+                specified in `dims_to_sample` will be fixed to values given in
+                `condition`.
 
         Returns:
             Conditional posterior log-probability $\log(p(\theta_i|\theta_j, x))$,
